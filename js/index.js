@@ -132,7 +132,7 @@ let message = (function () {
             step++;
 
             if (step > 5) {
-                translateY -= 1.2;
+                translateY -= 2;
                 $messageBox.css("transform", "translateY(" + translateY + "rem)");
             }
             if (step > $liList.length) {
@@ -166,7 +166,7 @@ let message = (function () {
     //点击发送按钮
     $btn.singleTap(() => {
         talkText.style.display = "none";
-        $keyboard.css("transform", "translateY(4.8rem)");
+        $keyboard.css("transform", "translateY(3.7rem)");
         step--;
         $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"});
         step++;
@@ -263,4 +263,4 @@ let examples = (function () {
         }
     }
 })();
-start.init();
+answer.init();
