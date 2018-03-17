@@ -265,4 +265,4 @@ let examples=(function () {
         }
     }
 })();
-examples.init();
+start.init();
