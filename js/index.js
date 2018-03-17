@@ -232,19 +232,19 @@ let examples=(function () {
     let change=function (example) {
         let{slides:slidesAry,activeIndex}=example;
         if(slidesAry===0){
-            $makisu.makisu({
-                selector: 'dd',
-                overlap: 0.85,
-                speed: 1.7
-            });
-            $makisu.makisu( 'open' );
+            // $makisu.makisu({
+            //     selector: 'dd',
+            //     overlap: 0.85,
+            //     speed: 1.7
+            // });
+            // $makisu.makisu( 'open' );
         }else{
-            $makisu.makisu({
-                selector: 'dd',
-                overlap: 0.85,
-                speed: 1.7
-            });
-            $makisu.makisu('close');
+            // $makisu.makisu({
+            //     selector: 'dd',
+            //     overlap: 0.85,
+            //     speed: 1.7
+            // });
+            // $makisu.makisu('close');
         }
 
     }
