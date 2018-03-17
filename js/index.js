@@ -1,13 +1,14 @@
 ~function (pro) {
     function queryURL() {
-        let reg=/([^?#&]+)=([^?#&]+)/g,
-            result={};
-        this.replace(reg,function () {
-            obj[arguments[1]]=arguments[2]
+        let reg = /([^?#&]+)=([^?#&]+)/g,
+            result = {};
+        this.replace(reg, function () {
+            obj[arguments[1]] = arguments[2]
         })
         return result;
     }
-    pro.queryURL=queryURL;
+
+    pro.queryURL = queryURL;
 
 
 }(String.prototype)
@@ -15,7 +16,7 @@
 let start = (function () {
     let $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        imgList = ["img/icon.png", "img/zf_concatAddress.png", "img/zf_concatInfo.png", "img/zf_concatPhone.png", "img/zf_course.png", "img/zf_course1.png", "img/zf_course2.png", "img/zf_course3.png", "img/zf_course4.png", "img/zf_course5.png", "img/zf_course6.png", "img/zf_cube1.png", "img/zf_cube2.png", "img/zf_cube3.png", "img/zf_cube4.png", "img/zf_cube5.png", "img/zf_cube6.png", "img/zf_cubeBg.jpg", "img/zf_cubeTip.png", "img/zf_emploment.png", "img/zf_messageArrow1.png", "img/zf_messageArrow2.png", "img/zf_messageChat.png", "img/zf_messageKeyboard.png", "img/zf_messageLogo.png", "img/zf_messageStudent.png", "img/zf_outline.png", "img/zf_phoneBg.jpg", "img/zf_phoneDetail.png", "img/zf_phoneListen.png", "img/zf_phoneLogo.png", "img/zf_return.png", "img/zf_style1.jpg", "img/zf_style2.jpg", "img/zf_style3.jpg", "img/zf_styleTip1.png", "img/zf_styleTip2.png", "img/zf_teacher1.png", "img/zf_teacher2.png", "img/zf_teacher3.jpg", "img/zf_teacher4.png", "img/zf_teacher5.png", "img/zf_teacher6.png", "img/zf_teacherTip.png"],
+        imgList = ["img/icon.png", "img/music.jpg", "img/zf_concatAddress.png", "img/zf_concatInfo.png", "img/zf_concatPhone.png", "img/zf_course.png", "img/zf_course1.png", "img/zf_course2.png", "img/zf_course3.png", "img/zf_course4.png", "img/zf_course5.png", "img/zf_course6.png", "img/zf_cube1.png", "img/zf_cube2.png", "img/zf_cube3.png", "img/zf_cube4.png", "img/zf_cube5.png", "img/zf_cube6.png", "img/zf_cubeBg.jpg", "img/zf_cubeTip.png", "img/zf_emploment.png", "img/zf_messageArrow1.png", "img/zf_messageArrow2.png", "img/zf_messageChat.png", "img/zf_messageKeyboard.png", "img/zf_messageLogo.png", "img/zf_messageStudent.png", "img/zf_outline.png", "img/zf_phoneBg.jpg", "img/zf_phoneDetail.png", "img/zf_phoneListen.png", "img/zf_phoneLogo.png", "img/zf_return.png", "img/zf_styleTip1.png", "img/zf_styleTip2.png", "img/zf_teacherTip.png"],
 
         [total, cur] = [imgList.length, 0];
 
@@ -119,14 +120,15 @@ let message = (function () {
         $liList = $messageBox.find("li"),
         $keyboard = $message.find(".message-keyboard").eq(0),
         talkText = $keyboard.find("span")[0],
+        $btn = $keyboard.find("a"),
         audio = $message.find("audio")[0],
         messageTimer = null,
         step = 0;
     let talkRun = function () {
         let translateY = 0;
         messageTimer = setInterval(() => {
-            step!==3?$liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"}):null;
-            step === 3? talking() : null;
+            step !== 3 ? $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"}) : null;
+            step === 3 ? talking() : null;
             step++;
 
             if (step > 5) {
@@ -136,6 +138,7 @@ let message = (function () {
             if (step > $liList.length) {
                 clearTimeout(messageTimer);
                 $message.remove();
+                cube.init();
 
             }
         }, 1000);
@@ -147,26 +150,28 @@ let message = (function () {
         $keyboard.css("transform", "translateY(0)");
         let text = talkText.dataset.talk,
             curStep = 0;
-        let talkTimeout=setTimeout(()=>{
+        let talkTimeout = setTimeout(() => {
             clearTimeout(talkTimeout);
             let talkTimer = setInterval(() => {
                 talkText.innerHTML += text.charAt(curStep);
                 curStep++;
                 if (!text.charAt(curStep)) {
-
                     clearInterval(talkTimer);
-                    talkText.style.display = "none";
-                    $keyboard.css("transform", "translateY(4.8rem)");
-                    step--;
-                    $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"});
-                    step++;
-                    talkRun();
+                    $btn.css("display", "block");
                 }
             }, 100)
-        },500)
+        }, 500)
 
-    }
-    //
+    };
+    //点击发送按钮
+    $btn.singleTap(() => {
+        talkText.style.display = "none";
+        $keyboard.css("transform", "translateY(4.8rem)");
+        step--;
+        $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"});
+        step++;
+        talkRun();
+    })
     return {
         init: function () {
             $message.css("display", "block");
@@ -178,31 +183,33 @@ let message = (function () {
 })();
 let cube = (function () {
     let $cube = $(".cube"),
-        $box=$cube.find("ul");
+        $box = $cube.find("ul");
 
-    let start=function (e) {
-        let touch=e.touches[0];
-        $box.attr({"startX":touch.clientX,"startY":touch.clientY});
+    let start = function (e) {
+        let touch = e.touches[0];
+        $box.attr({"startX": touch.clientX, "startY": touch.clientY});
 
     }
-    let move=function (e) {
-        let touch=e.touches[0],
-            changeX=touch.clientX-$box.attr("startX"),
-            changeY=touch.clientY-$box.attr("startY");
-        $box.attr({"changeX":changeX,"changeY":changeY});
+    let move = function (e) {
+        let touch = e.touches[0],
+            changeX = touch.clientX - $box.attr("startX"),
+            changeY = touch.clientY - $box.attr("startY");
+        $box.attr({"changeX": changeX, "changeY": changeY});
     }
-    let end=function (e) {
-        let changeX=$box.attr("changeX"),
-            changeY=$box.attr("changeY"),
-            rotateX=$box.attr("rotateX"),
-            rotateY=$box.attr("rotateY");
+    let end = function (e) {
+        let changeX = $box.attr("changeX"),
+            changeY = $box.attr("changeY"),
+            rotateX = $box.attr("rotateX"),
+            rotateY = $box.attr("rotateY");
 
-        if(Math.abs(changeX)>10||Math.abs(changeY)>10){
-            rotateX=rotateX-0-changeY/3,
-            rotateY=rotateY-0+changeX/3;
-            $box.attr({"rotateX":rotateX,
-                "rotateY":rotateY});
-            $box.css("transform","rotateX("+rotateX+"deg) rotateY("+rotateY+"deg) scale(.6)");
+        if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
+            rotateX = rotateX - 0 - changeY / 3,
+                rotateY = rotateY - 0 + changeX / 3;
+            $box.attr({
+                "rotateX": rotateX,
+                "rotateY": rotateY
+            });
+            $box.css("transform", "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(.6)");
 
         }
 
@@ -210,57 +217,48 @@ let cube = (function () {
     return {
         init: function () {
             $cube.css("display", "block");
-            $box.attr({"rotateX":25,
-                "rotateY":-20}).on({"touchstart":start,"touchmove":move,"touchend":end})
+            $box.attr({
+                "rotateX": 25,
+                "rotateY": -20
+            }).on({"touchstart": start, "touchmove": move, "touchend": end})
             $box.find("li").singleTap(function () {
-                let index=$(this).index();
-                $cube.css("display","none")
+                let index = $(this).index();
+                $cube.css("display", "none")
                 examples.init(index);
             })
         }
     }
 })();
-let examples=(function () {
-    let $examples=$(".examples"),
-        $comeBack=$examples.find(".come-back"),
-        $makisu=$("#makisu"),
-        slideExamples=null;
-    let comeBack=function () {
+let examples = (function () {
+    let $examples = $(".examples"),
+        $comeBack = $examples.find(".come-back"),
+        $makisu = $("#makisu"),
+        slideExamples = null;
+    let comeBack = function () {
         cube.init();
-        $examples.css("display","none");
+        $examples.css("display", "none");
     }
-    let change=function (example) {
-        let{slides:slidesAry,activeIndex}=example;
-        if(slidesAry===0){
-            // $makisu.makisu({
-            //     selector: 'dd',
-            //     overlap: 0.85,
-            //     speed: 1.7
-            // });
-            // $makisu.makisu( 'open' );
-        }else{
-            // $makisu.makisu({
-            //     selector: 'dd',
-            //     overlap: 0.85,
-            //     speed: 1.7
-            // });
-            // $makisu.makisu('close');
+    let change = function (example) {
+        let {slides: slidesAry, activeIndex} = example;
+        if (slidesAry === 0) {
+        } else {
         }
 
     }
-    return{
-        init:function (index=0) {
-            $examples.css("display","block");
+    return {
+        init: function (index = 0) {
+            $examples.css("display", "block");
 
-            if(!slideExamples){
+            if (!slideExamples) {
                 $comeBack.singleTap(comeBack)
-                slideExamples=new Swiper(".swiper-container",{
-                    "effect":"coverflow",
+                slideExamples = new Swiper(".swiper-container", {
+                    "effect": "coverflow",
                     "onTransitionEnd": change,
-                    "onInit": change})
+                    "onInit": change
+                })
             }
             // index是索引，0是速度
-            slideExamples.slideTo(index,0)
+            slideExamples.slideTo(index, 0)
 
         }
     }

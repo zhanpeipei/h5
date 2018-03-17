@@ -7,7 +7,7 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
-
+.bg{background-size:cover;}
 html {
   font-size: 100px;
 }
@@ -29,6 +29,7 @@ body {
   width: 100%;
   max-width: 6.4rem;
   margin: 0 auto;
+
   .start {
     background-color: #000;
     .start-title {
@@ -71,7 +72,7 @@ body {
         top: 0;
         height: 100%;
         transition: linear .3s;
-        background-size: @h @h;
+        background-size: cover;
         background-image: -webkit-linear-gradient(left bottom, #5cbb5c 0%, #5cbb5c 25%, #74c274 25%, #74c274 50%, #5cbb5c 50%, #5cbb5c 75%, #74c274 75%, #74c274 100%);
         background-repeat: repeat-x;
         -webkit-animation: progress 1s linear infinite both;
@@ -233,7 +234,7 @@ body {
               width: .1rem;
               height: .2rem;
               background: url("../img/zf_messageArrow2.png") no-repeat;
-              background-size: cover;
+              .bg
             }
           }
         }
@@ -253,7 +254,7 @@ body {
               top: 0.2rem;
               left: -.1rem;
               background: url("../img/zf_messageArrow1.png");
-              background-size: cover;
+              .bg
             }
           }
         }
@@ -263,12 +264,12 @@ body {
       position: absolute;
       width: 100%;
       height: 5.16rem;
-      bottom: .54rem;
+      bottom: -.54rem;
       left: 0;
       transition: all .3s linear;
       background: url("../img/zf_messageKeyboard.png") no-repeat;
-      background-size: cover;
-      transform: translateY(4.8rem);
+      transform: translateY(3.7rem);
+      .bg;
       span {
         position: absolute;
         left: .9rem;
@@ -276,12 +277,23 @@ body {
         font-size: .25rem;
 
       }
+      a{
+        position: absolute;
+        width:  1.47rem;
+        height: .74rem;
+        background: url("../img/zf_messageChat.png");
+        .bg;
+        right: 0.1rem;
+        bottom: .57rem;
+        display: none;
+
+      }
 
     }
   }
   .cube {
     background: url("../img/zf_cubeBg.jpg") no-repeat;
-    background-size: cover;
+   .bg;
     perspective: 1000px;
     @len: 2.55rem;
     ul {
@@ -294,45 +306,43 @@ body {
       margin-top:-@len;
       margin-left:-@len;
       transform: rotateY(25deg) rotateX(-20deg) scale(.6);
-      transition: all 1s;
+      transition: all .4s;
       li {
         position: absolute;
         width: 2*@len;
         height: 2*@len;
-        left: 50%;
-        top: 50%;
-        margin-top:-@len;
-        margin-left:-@len;
+        left: 0;
+        top: 0;
 
         &:nth-of-type(1) {
           transform: translateZ(@len);
           background: url("../img/zf_cube1.png");
-          background-size: cover;
+          .bg;
         }
         &:nth-of-type(2) {
           transform: translateZ(-@len) rotateY(180deg) ;
           background: url("../img/zf_cube2.png");
-          background-size: cover;
+          .bg;
         }
         &:nth-of-type(3) {
           transform: translateX(@len) rotateY(90deg);
           background: url("../img/zf_cube3.png");
-          background-size: cover;
+          .bg;
         }
         &:nth-of-type(4) {
           transform: translateX(-@len) rotateY(-90deg);
           background: url("../img/zf_cube4.png");
-          background-size: cover;
+          .bg;
         }
         &:nth-of-type(5) {
           transform: translateY(@len) rotateX(-90deg);
           background: url("../img/zf_cube5.png");
-          background-size: cover;
+          .bg;
         }
         &:nth-of-type(6) {
           transform: translateY(-@len) rotateX(90deg);
           background: url("../img/zf_cube6.png");
-          background-size: cover;
+          .bg;
         }
       }
     }
@@ -387,7 +397,7 @@ body {
               height: .42rem;
               font-size: .2rem;
               background: url("../img/zf_outline.png");
-              background-size: cover;
+              .bg;
               color:#fff;
               line-height: .42rem;
               text-align: center;
@@ -396,7 +406,6 @@ body {
               line-height: .6rem;
             }
           }
-
         }
       }
 
@@ -409,7 +418,7 @@ body {
       right: .2rem;
       top: .2rem;
       background: url("../img/zf_return.png") no-repeat;
-      background-size: cover;
+      .bg;
       z-index: 1000;
     }
     .page1{

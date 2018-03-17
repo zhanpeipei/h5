@@ -716,6 +716,9 @@ body {
   height: 100%;
   overflow: hidden;
 }
+.bg {
+  background-size: cover;
+}
 html {
   font-size: 100px;
 }
@@ -780,7 +783,7 @@ body {
   top: 0;
   height: 100%;
   transition: linear .3s;
-  background-size: 0.3rem 0.3rem;
+  background-size: cover;
   background-image: -webkit-linear-gradient(left bottom, #5cbb5c 0%, #5cbb5c 25%, #74c274 25%, #74c274 50%, #5cbb5c 50%, #5cbb5c 75%, #74c274 75%, #74c274 100%);
   background-repeat: repeat-x;
   -webkit-animation: progress 1s linear infinite both;
@@ -974,18 +977,28 @@ body {
   position: absolute;
   width: 100%;
   height: 5.16rem;
-  bottom: .54rem;
+  bottom: -0.54rem;
   left: 0;
   transition: all .3s linear;
   background: url("../img/zf_messageKeyboard.png") no-repeat;
+  transform: translateY(3.7rem);
   background-size: cover;
-  transform: translateY(4.8rem);
 }
 .main .message .message-keyboard span {
   position: absolute;
   left: .9rem;
   top: .35rem;
   font-size: .25rem;
+}
+.main .message .message-keyboard a {
+  position: absolute;
+  width: 1.47rem;
+  height: .74rem;
+  background: url("../img/zf_messageChat.png");
+  background-size: cover;
+  right: 0.1rem;
+  bottom: .57rem;
+  display: none;
 }
 .main .cube {
   background: url("../img/zf_cubeBg.jpg") no-repeat;
@@ -1002,16 +1015,14 @@ body {
   margin-top: -2.55rem;
   margin-left: -2.55rem;
   transform: rotateY(25deg) rotateX(-20deg) scale(0.6);
-  transition: all 1s;
+  transition: all .4s;
 }
 .main .cube ul li {
   position: absolute;
   width: 5.1rem;
   height: 5.1rem;
-  left: 50%;
-  top: 50%;
-  margin-top: -2.55rem;
-  margin-left: -2.55rem;
+  left: 0;
+  top: 0;
 }
 .main .cube ul li:nth-of-type(1) {
   transform: translateZ(2.55rem);
