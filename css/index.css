@@ -917,7 +917,7 @@ body {
   background-color: #eaeaea;
 }
 .main .message .message-header {
-  position: fixed;
+  position: absolute;
   z-index: 9999;
   background-color: #000;
   color: #fff;
@@ -941,6 +941,7 @@ body {
 }
 .main .message .message-header .message-header-right {
   float: right;
+  font-size: .3rem;
 }
 .main .message .message-box {
   width: 100%;

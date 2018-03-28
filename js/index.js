@@ -278,4 +278,4 @@ let examples = (function () {
         }
     }
 })();
-message.init();
+start.init();
