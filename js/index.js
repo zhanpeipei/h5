@@ -16,20 +16,35 @@
 let start = (function () {
     let $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        imgList = ["img/icon.png", "img/music.jpg", "img/zf_concatAddress.png", "img/zf_concatInfo.png", "img/zf_concatPhone.png", "img/zf_course.png", "img/zf_course1.png", "img/zf_course2.png", "img/zf_course3.png", "img/zf_course4.png", "img/zf_course5.png", "img/zf_course6.png", "img/zf_cube1.png", "img/zf_cube2.png", "img/zf_cube3.png", "img/zf_cube4.png", "img/zf_cube5.png", "img/zf_cube6.png", "img/zf_cubeBg.jpg", "img/zf_cubeTip.png", "img/zf_emploment.png", "img/zf_messageArrow1.png", "img/zf_messageArrow2.png", "img/zf_messageChat.png", "img/zf_messageKeyboard.png", "img/zf_messageLogo.png", "img/zf_messageStudent.png", "img/zf_outline.png", "img/zf_phoneBg.jpg", "img/zf_phoneDetail.png", "img/zf_phoneListen.png", "img/zf_phoneLogo.png", "img/zf_return.png", "img/zf_styleTip1.png", "img/zf_styleTip2.png", "img/zf_teacherTip.png"],
+        srcList = ["img/icon.png", "img/music.jpg", "img/zf_concatAddress.png", "img/zf_concatInfo.png", "img/zf_concatPhone.png", "img/zf_course.png", "img/zf_course1.png", "img/zf_course2.png", "img/zf_course3.png", "img/zf_course4.png", "img/zf_course5.png", "img/zf_course6.png", "img/zf_cube1.png", "img/zf_cube2.png", "img/zf_cube3.png", "img/zf_cube4.png", "img/zf_cube5.png", "img/zf_cube6.png", "img/zf_cubeBg.jpg", "img/zf_cubeTip.png", "img/zf_emploment.png", "img/zf_messageArrow1.png", "img/zf_messageArrow2.png", "img/zf_messageChat.png", "img/zf_messageKeyboard.png", "img/wx-zpp.jpg", "img/wx-boss.png", "img/zf_outline.png", "img/zf_phoneBg.jpg", "img/zf_phoneDetail.png", "img/zf_phoneListen.png", "img/zf_phoneLogo.png", "img/zf_return.png", "img/zf_styleTip1.png", "img/zf_styleTip2.png", "img/zf_teacherTip.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3",],
 
-        [total, cur] = [imgList.length, 0];
+        [total, cur] = [srcList.length, 0];
 
     function progress() {
-        imgList.forEach(function (item) {
-            let img = new Image();
-            img.src = item;
-            img.onload = function () {
-                img = null;
-                cur++;
-                computer(cur);
+        srcList.forEach(function (item) {
+            let reg = /\.(png|gif|jpg)$/,
+                el = null;
+
+            if (reg.test(item)) {
+                el = new Image;
+                el.src = item;
+                el.onload = () => {
+                    el = null;
+                    cur++;
+                    computer(cur);
+                };
+            } else {
+
+                el = new Audio;
+                el.src = item;
+                el.oncanplaythrough = () => {
+                    el = null;
+                    cur++;
+                    computer(cur);
+                };
 
             }
+
         })
     }
 
@@ -263,4 +278,4 @@ let examples = (function () {
         }
     }
 })();
-answer.init();
+message.init();

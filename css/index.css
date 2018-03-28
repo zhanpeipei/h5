@@ -710,6 +710,20 @@ button.swiper-pagination-bullet {
     transform: rotate(360deg);
   }
 }
+@font-face {
+  font-family: 'zpp';
+  src: url('../font/iconfont.eot');
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), url('../font/iconfont.woff') format('woff'), url('../font/iconfont.ttf') format('truetype'), url('../font/iconfont.svg#iconfont') format('svg');
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: "zpp" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
 html,
 body {
   width: 100%;
@@ -821,8 +835,9 @@ body {
 }
 .main .answer .title h3 {
   line-height: 1.25rem;
-  font-size: .8rem;
+  font-size: .6rem;
   margin-bottom: .1rem;
+  color: #fff;
 }
 .main .answer .title p {
   display: none;
@@ -858,7 +873,7 @@ body {
   z-index: 10;
   box-sizing: border-box;
   z-index: 0;
-  border: 3px solid greenyellow;
+  border: 3px solid #4cd864;
   animation: circleMove 1s both linear infinite;
 }
 @keyframes circleMove {
@@ -901,11 +916,38 @@ body {
 .main .message {
   background-color: #eaeaea;
 }
+.main .message .message-header {
+  position: fixed;
+  z-index: 9999;
+  background-color: #000;
+  color: #fff;
+  height: .7rem;
+  line-height: .7rem;
+  width: 100%;
+  text-align: center;
+  font-size: .28rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 0 .2rem;
+}
+.main .message .message-header .message-header-left {
+  float: left;
+}
+.main .message .message-header .message-header-left span {
+  font-size: .3rem;
+}
+.main .message .message-header h3 {
+  font-size: .34rem;
+}
+.main .message .message-header .message-header-right {
+  float: right;
+}
 .main .message .message-box {
   width: 100%;
   position: relative;
   padding-top: .2rem;
   transition: all .3s linear;
+  transform: translateY(0.8rem);
 }
 .main .message .message-box li {
   opacity: 0;
@@ -919,6 +961,7 @@ body {
   transform: translateY(1rem);
 }
 .main .message .message-box li p {
+  text-align: left;
   max-width: 3.6rem;
   padding: .25rem;
   border-radius: .1rem;
@@ -932,18 +975,18 @@ body {
   position: absolute;
   top: 0;
 }
-.main .message .message-box li.message-teacher {
+.main .message .message-box li.message-zyp {
   text-align: right;
   padding-right: 1.25rem;
 }
-.main .message .message-box li.message-teacher img {
+.main .message .message-box li.message-zyp img {
   right: .25rem;
 }
-.main .message .message-box li.message-teacher p {
+.main .message .message-box li.message-zyp p {
   float: right;
   background-color: #A2E45C;
 }
-.main .message .message-box li.message-teacher p::after {
+.main .message .message-box li.message-zyp p::after {
   content: "";
   position: absolute;
   top: .2rem;
@@ -953,17 +996,17 @@ body {
   background: url("../img/zf_messageArrow2.png") no-repeat;
   background-size: cover;
 }
-.main .message .message-box li.message-student {
+.main .message .message-box li.message-boss {
   padding-left: 1.25rem;
 }
-.main .message .message-box li.message-student img {
+.main .message .message-box li.message-boss img {
   left: .25rem;
 }
-.main .message .message-box li.message-student p {
+.main .message .message-box li.message-boss p {
   float: left;
   background-color: #fff;
 }
-.main .message .message-box li.message-student p::before {
+.main .message .message-box li.message-boss p::before {
   content: '';
   position: absolute;
   width: .1rem;
