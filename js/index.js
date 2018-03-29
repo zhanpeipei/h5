@@ -33,7 +33,7 @@ var start = function () {
             }
         })
   
-        });
+        };
     }
 
     function computer(cur) {
