@@ -24,18 +24,15 @@ var start = function () {
 
     function progress() {
         srcList.forEach(function (item) {
-             var img=new Image;
+            var img=new Image;
             img.src=item;
             img.onload=function(){
-                 img = null;
-                    cur++;
-                    computer(cur);
+                img = null;
+                cur++;
+                computer(cur);
             }
         })
-  
-        };
-   
-
+    }
     function computer(cur) {
         var current = cur / total * 100 + "%";
         $run.css("width", current);
@@ -53,7 +50,7 @@ var start = function () {
             $start.css("display", "block");
             progress();
         }
-    };
+    }
 }();
 
 var answer = function () {
@@ -268,4 +265,3 @@ var details = function () {
     };
 }();
 start.init();
-
