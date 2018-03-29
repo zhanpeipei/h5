@@ -183,14 +183,17 @@ var cube = function () {
     var start = function start(e) {
         var touch = e.touches[0];
         $box.attr({ "startX": touch.clientX, "startY": touch.clientY });
+        e.preventDefault();
     };
     var move = function move(e) {
         var touch = e.touches[0],
             changeX = touch.clientX - $box.attr("startX"),
             changeY = touch.clientY - $box.attr("startY");
         $box.attr({ "changeX": changeX, "changeY": changeY });
+        e.preventDefault();
     };
     var end = function end(e) {
+        e.preventDefault();
         var changeX = $box.attr("changeX"),
             changeY = $box.attr("changeY"),
             rotateX = $box.attr("rotateX"),
