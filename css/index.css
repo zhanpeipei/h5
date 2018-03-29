@@ -797,7 +797,7 @@ body {
   top: 0;
   height: 100%;
   transition: linear .3s;
-  background-size: .3rem;
+  background-size: .3rem .3rem;
   background-image: -webkit-linear-gradient(left bottom, #5cbb5c 0%, #5cbb5c 25%, #74c274 25%, #74c274 50%, #5cbb5c 50%, #5cbb5c 75%, #74c274 75%, #74c274 100%);
   background-repeat: repeat-x;
   -webkit-animation: progress 1s linear infinite both;

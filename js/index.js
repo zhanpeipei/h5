@@ -16,7 +16,7 @@
 var start = function () {
     var $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        srcList = ["img/icon.png", "img/music.jpg", "img/concatAddress.png", "img/concatInfo.png", "img/concatPhone.png", "img/course.png", "img/course1.png", "img/course2.png", "img/course3.png", "img/course4.png", "img/course5.png", "img/course6.png", "img/cube1.png", "img/cube2.png", "img/cube3.png", "img/cube4.png", "img/cube5.png", "img/cube6.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/emploment.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/wx-zpp.jpg", "img/wx-boss.png", "img/outline.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/phoneLogo.png", "img/return.png", "img/styleTip1.png", "img/styleTip2.png", "img/teacherTip.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3"],
+        srcList = ["img/ability1.png", "img/ability14.png", "img/ability2.png", "img/ability3.png", "img/ability5.png", "img/css3.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/jquery.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/return.png", "img/wx-boss.png", "img/wx-zpp.jpg", "img/zpp_cube1.png", "img/zpp_cube2.png", "img/zpp_cube3.png", "img/zpp_cube4.png", "img/zpp_cube5.png", "img/zpp_cube6.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3"],
         _ref = [srcList.length, 0],
         total = _ref[0],
         cur = _ref[1];
@@ -39,6 +39,7 @@ var start = function () {
 
                 el = new Audio();
                 el.src = item;
+                console.log(item);
                 el.oncanplaythrough = function () {
                     el = null;
                     cur++;
