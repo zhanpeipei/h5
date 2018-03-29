@@ -34,7 +34,7 @@ var start = function () {
         })
   
         };
-    }
+   
 
     function computer(cur) {
         var current = cur / total * 100 + "%";
