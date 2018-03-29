@@ -1,78 +1,75 @@
+"use strict";
+
 ~function (pro) {
     function queryURL() {
-        let reg = /([^?#&]+)=([^?#&]+)/g,
+        var reg = /([^?#&]+)=([^?#&]+)/g,
             result = {};
         this.replace(reg, function () {
-            obj[arguments[1]] = arguments[2]
-        })
+            obj[arguments[1]] = arguments[2];
+        });
         return result;
     }
 
     pro.queryURL = queryURL;
+}(String.prototype);
 
-
-}(String.prototype)
-
-let start = (function () {
-    let $start = $(".start").eq(0),
+var start = function () {
+    var $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        srcList = ["img/icon.png", "img/music.jpg", "img/zf_concatAddress.png", "img/zf_concatInfo.png", "img/zf_concatPhone.png", "img/zf_course.png", "img/zf_course1.png", "img/zf_course2.png", "img/zf_course3.png", "img/zf_course4.png", "img/zf_course5.png", "img/zf_course6.png", "img/zf_cube1.png", "img/zf_cube2.png", "img/zf_cube3.png", "img/zf_cube4.png", "img/zf_cube5.png", "img/zf_cube6.png", "img/zf_cubeBg.jpg", "img/zf_cubeTip.png", "img/zf_emploment.png", "img/zf_messageArrow1.png", "img/zf_messageArrow2.png", "img/zf_messageChat.png", "img/zf_messageKeyboard.png", "img/wx-zpp.jpg", "img/wx-boss.png", "img/zf_outline.png", "img/zf_phoneBg.jpg", "img/zf_phoneDetail.png", "img/zf_phoneListen.png", "img/zf_phoneLogo.png", "img/zf_return.png", "img/zf_styleTip1.png", "img/zf_styleTip2.png", "img/zf_teacherTip.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3",],
+        srcList = ["img/icon.png", "img/music.jpg", "img/concatAddress.png", "img/concatInfo.png", "img/concatPhone.png", "img/course.png", "img/course1.png", "img/course2.png", "img/course3.png", "img/course4.png", "img/course5.png", "img/course6.png", "img/cube1.png", "img/cube2.png", "img/cube3.png", "img/cube4.png", "img/cube5.png", "img/cube6.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/emploment.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/wx-zpp.jpg", "img/wx-boss.png", "img/outline.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/phoneLogo.png", "img/return.png", "img/styleTip1.png", "img/styleTip2.png", "img/teacherTip.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3"],
+        _ref = [srcList.length, 0],
+        total = _ref[0],
+        cur = _ref[1];
 
-        [total, cur] = [srcList.length, 0];
 
     function progress() {
         srcList.forEach(function (item) {
-            let reg = /\.(png|gif|jpg)$/,
+            var reg = /\.(png|gif|jpg)$/,
                 el = null;
 
             if (reg.test(item)) {
-                el = new Image;
+                el = new Image();
                 el.src = item;
-                el.onload = () => {
+                el.onload = function () {
                     el = null;
                     cur++;
                     computer(cur);
                 };
             } else {
 
-                el = new Audio;
+                el = new Audio();
                 el.src = item;
-                el.oncanplaythrough = () => {
+                el.oncanplaythrough = function () {
                     el = null;
                     cur++;
                     computer(cur);
                 };
-
             }
-
-        })
+        });
     }
 
     function computer(cur) {
-        let current = cur / total * 100 + "%";
+        var current = cur / total * 100 + "%";
         $run.css("width", current);
         if (cur >= total) {
-            let timer = setTimeout(() => {
+            var timer = setTimeout(function () {
                 $start.remove();
                 answer.init();
                 clearTimeout(timer);
-            }, 1000)
-
-
+            }, 1000);
         }
-
     }
 
     return {
-        init: function () {
+        init: function init() {
             $start.css("display", "block");
             progress();
         }
-    }
-})();
+    };
+}();
 
-let answer = (function () {
-    let $answer = $(".answer").eq(0),
+var answer = function () {
+    var $answer = $(".answer").eq(0),
         $listen = $answer.find(".listen").eq(0),
         $timeCount = $answer.find(".title-time").eq(0),
         $listenA = $listen.find("a").eq(0),
@@ -82,16 +79,15 @@ let answer = (function () {
         answerIntro = $answer.find("audio")[1],
         answerTimer = null;
 
-
     //标题上面的计时器
-    let count = function () {
+    var count = function count() {
         $timeCount.css("display", "block");
         console.log(1);
-        let duration = answerIntro.duration,
+        var duration = answerIntro.duration,
             cur = answerIntro.currentTime;
-        answerTimer = setInterval(() => {
+        answerTimer = setInterval(function () {
             cur = answerIntro.currentTime;
-            let m = Math.floor(cur / 60),
+            var m = Math.floor(cur / 60),
                 s = Math.floor(cur % 60);
             m = m < 10 ? "0" + m : m;
             s = s < 10 ? "0" + s : s;
@@ -102,35 +98,33 @@ let answer = (function () {
                 answerIntro.pause();
                 listeningAF();
             }
-
-        }, 1000)
+        }, 1000);
     };
     // 接听中点击事件
-    let listeningAF = function () {
+    var listeningAF = function listeningAF() {
         $answer.remove();
-        message.init()
-
-    }
+        message.init();
+    };
     // 接听页面点击事件
-    let listenAF = function () {
+    var listenAF = function listenAF() {
         $listen.remove();
         answerBell.pause();
         answerIntro.play();
-        $listening.css({"transform": "translateY(0)", "display": "block"});
+        $listening.css({ "transform": "translateY(0)", "display": "block" });
         count();
-    }
+    };
     return {
-        init: function () {
+        init: function init() {
             $answer.css("display", "block");
             answerBell.play();
             $listen.css("transform", "translateY(0)");
             $listenA.singleTap(listenAF);
             $listeningA.singleTap(listeningAF);
         }
-    }
-})();
-let message = (function () {
-    let $message = $(".message").eq(0),
+    };
+}();
+var message = function () {
+    var $message = $(".message").eq(0),
         $messageBox = $message.find(".message-box").eq(0),
         $liList = $messageBox.find("li"),
         $keyboard = $message.find(".message-keyboard").eq(0),
@@ -139,10 +133,10 @@ let message = (function () {
         audio = $message.find("audio")[0],
         messageTimer = null,
         step = 0;
-    let talkRun = function () {
-        let translateY = 0;
-        messageTimer = setInterval(() => {
-            step !== 3 ? $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"}) : null;
+    var talkRun = function talkRun() {
+        var translateY = 0;
+        messageTimer = setInterval(function () {
+            step !== 3 ? $liList.eq(step).css({ "opacity": "1", "transform": "translateY(0)" }) : null;
             step === 3 ? talking() : null;
             step++;
 
@@ -154,128 +148,132 @@ let message = (function () {
                 clearTimeout(messageTimer);
                 $message.remove();
                 cube.init();
-
             }
         }, 1000);
-    }
+    };
 
     //第三幅图出现后的动作
-    let talking = function () {
+    var talking = function talking() {
         clearInterval(messageTimer);
         $keyboard.css("transform", "translateY(0)");
-        let text = talkText.dataset.talk,
+        var text = talkText.dataset.talk,
             curStep = 0;
-        let talkTimeout = setTimeout(() => {
+        var talkTimeout = setTimeout(function () {
             clearTimeout(talkTimeout);
-            let talkTimer = setInterval(() => {
+            var talkTimer = setInterval(function () {
                 talkText.innerHTML += text.charAt(curStep);
                 curStep++;
                 if (!text.charAt(curStep)) {
                     clearInterval(talkTimer);
                     $btn.css("display", "block");
                 }
-            }, 100)
-        }, 500)
-
+            }, 100);
+        }, 500);
     };
     //点击发送按钮
-    $btn.singleTap(() => {
+    $btn.singleTap(function () {
         talkText.style.display = "none";
         $keyboard.css("transform", "translateY(3.7rem)");
         step--;
-        $liList.eq(step).css({"opacity": "1", "transform": "translateY(0)"});
+        $liList.eq(step).css({ "opacity": "1", "transform": "translateY(0)" });
         step++;
         talkRun();
-    })
+    });
     return {
-        init: function () {
+        init: function init() {
             $message.css("display", "block");
             audio.play();
             talkRun();
         }
 
-    }
-})();
-let cube = (function () {
-    let $cube = $(".cube"),
+    };
+}();
+var cube = function () {
+    var $cube = $(".cube"),
         $box = $cube.find("ul");
 
-    let start = function (e) {
-        let touch = e.touches[0];
-        $box.attr({"startX": touch.clientX, "startY": touch.clientY});
-
-    }
-    let move = function (e) {
-        let touch = e.touches[0],
+    var start = function start(e) {
+        var touch = e.touches[0];
+        $box.attr({ "startX": touch.clientX, "startY": touch.clientY });
+    };
+    var move = function move(e) {
+        var touch = e.touches[0],
             changeX = touch.clientX - $box.attr("startX"),
             changeY = touch.clientY - $box.attr("startY");
-        $box.attr({"changeX": changeX, "changeY": changeY});
-    }
-    let end = function (e) {
-        let changeX = $box.attr("changeX"),
+        $box.attr({ "changeX": changeX, "changeY": changeY });
+    };
+    var end = function end(e) {
+        var changeX = $box.attr("changeX"),
             changeY = $box.attr("changeY"),
             rotateX = $box.attr("rotateX"),
             rotateY = $box.attr("rotateY");
 
         if (Math.abs(changeX) > 10 || Math.abs(changeY) > 10) {
-            rotateX = rotateX - 0 - changeY / 3,
-                rotateY = rotateY - 0 + changeX / 3;
+            rotateX = rotateX - 0 - changeY / 3, rotateY = rotateY - 0 + changeX / 3;
             $box.attr({
                 "rotateX": rotateX,
                 "rotateY": rotateY
             });
-            $box.css("transform", "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) scale(.6)");
-
+            $box.css("transform", "rotateX(" + rotateX + "deg) rotateY(" + rotateY + "deg) ");
         }
-
-    }
+    };
     return {
-        init: function () {
+        init: function init() {
             $cube.css("display", "block");
             $box.attr({
                 "rotateX": 25,
                 "rotateY": -20
-            }).on({"touchstart": start, "touchmove": move, "touchend": end})
+            }).on({ "touchstart": start, "touchmove": move, "touchend": end });
             $box.find("li").singleTap(function () {
-                let index = $(this).index();
-                $cube.css("display", "none")
-                examples.init(index);
-            })
+                var index = $(this).index();
+                $cube.css("display", "none");
+                details.init(index);
+            });
         }
-    }
-})();
-let examples = (function () {
-    let $examples = $(".examples"),
-        $comeBack = $examples.find(".come-back"),
-        $makisu = $("#makisu"),
+    };
+}();
+var details = function () {
+    var $details = $(".details"),
+        $comeBack = $details.find(".come-back"),
         slideExamples = null;
-    let comeBack = function () {
+    var comeBack = function comeBack() {
         cube.init();
-        $examples.css("display", "none");
-    }
-    let change = function (example) {
-        let {slides: slidesAry, activeIndex} = example;
-        if (slidesAry === 0) {
-        } else {
-        }
-
-    }
+        $details.css("display", "none");
+    };
+    var tagCloud = function tagCloud() {
+        var tagEle = $details.find(".tag-cloud"),
+            container = $details.find(".container"),
+            r = 300,
+            fallLength = 500,
+            tags = [],
+            angleX = Math.PI / 500,
+            angleY = Math.PI / 500,
+            CX = container.offsetWidth / 2,
+            CY = container.offsetHeight / 2,
+            EX = container.offsetLeft,
+            EY = container.offsetTop;
+    };
+    var change = function change(example) {
+        var slides = example.slides,
+            activeIndex = example.activeIndex;
+    };
     return {
-        init: function (index = 0) {
-            $examples.css("display", "block");
+        init: function init() {
+            var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+            $details.css("display", "block");
 
             if (!slideExamples) {
-                $comeBack.singleTap(comeBack)
+                $comeBack.singleTap(comeBack);
                 slideExamples = new Swiper(".swiper-container", {
                     "effect": "coverflow",
                     "onTransitionEnd": change,
                     "onInit": change
-                })
+                });
             }
             // index是索引，0是速度
-            slideExamples.slideTo(index, 0)
-
+            slideExamples.slideTo(index, 0);
         }
-    }
-})();
+    };
+}();
 start.init();

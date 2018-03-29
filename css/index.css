@@ -743,7 +743,7 @@ body {
 .answer,
 .message,
 .cube,
-.examples {
+.details {
   position: relative;
   height: 100%;
   width: 100%;
@@ -821,7 +821,7 @@ body {
 }
 .main .answer {
   position: relative;
-  background: url("../img/zf_phoneBg.jpg") no-repeat;
+  background: url("../img/phoneBg.jpg") no-repeat;
 }
 .main .answer .title {
   padding-top: 0.5rem;
@@ -994,7 +994,7 @@ body {
   right: -0.1rem;
   width: .1rem;
   height: .2rem;
-  background: url("../img/zf_messageArrow2.png") no-repeat;
+  background: url("../img/messageArrow2.png") no-repeat;
   background-size: cover;
 }
 .main .message .message-box li.message-boss {
@@ -1014,7 +1014,7 @@ body {
   height: .2rem;
   top: 0.2rem;
   left: -0.1rem;
-  background: url("../img/zf_messageArrow1.png");
+  background: url("../img/messageArrow1.png");
   background-size: cover;
 }
 .main .message .message-keyboard {
@@ -1024,7 +1024,7 @@ body {
   bottom: -0.54rem;
   left: 0;
   transition: all .3s linear;
-  background: url("../img/zf_messageKeyboard.png") no-repeat;
+  background: url("../img/messageKeyboard.png") no-repeat;
   transform: translateY(3.7rem);
   background-size: cover;
 }
@@ -1038,64 +1038,64 @@ body {
   position: absolute;
   width: 1.47rem;
   height: .74rem;
-  background: url("../img/zf_messageChat.png");
+  background: url("../img/messageChat.png");
   background-size: cover;
   right: 0.1rem;
   bottom: .58rem;
   display: none;
 }
 .main .cube {
-  background: url("../img/zf_cubeBg.jpg") no-repeat;
+  background: url("../img/cubeBg.jpg") no-repeat;
   background-size: cover;
   perspective: 1000px;
 }
 .main .cube ul {
-  width: 5.1rem;
-  height: 5.1rem;
+  width: 3.57rem;
+  height: 3.57rem;
   transform-style: preserve-3d;
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -2.55rem;
-  margin-left: -2.55rem;
-  transform: rotateY(25deg) rotateX(-20deg) scale(0.6);
+  margin-left: -1.785rem;
+  margin-top: -1.785rem;
+  transform: rotateX(25deg) rotateY(-20deg);
   transition: all .4s;
 }
 .main .cube ul li {
   position: absolute;
-  width: 5.1rem;
-  height: 5.1rem;
+  width: 100%;
+  height: 100%;
   left: 0;
   top: 0;
 }
 .main .cube ul li:nth-of-type(1) {
-  transform: translateZ(2.55rem);
-  background: url("../img/zf_cube1.png");
+  transform: translateZ(1.785rem);
+  background: url("../img/zpp_cube1.png");
   background-size: cover;
 }
 .main .cube ul li:nth-of-type(2) {
-  transform: translateZ(-2.55rem) rotateY(180deg);
-  background: url("../img/zf_cube2.png");
+  transform: translateZ(-1.785rem) rotateY(180deg);
+  background: url("../img/zpp_cube2.png");
   background-size: cover;
 }
 .main .cube ul li:nth-of-type(3) {
-  transform: translateX(2.55rem) rotateY(90deg);
-  background: url("../img/zf_cube3.png");
+  transform: translateX(1.785rem) rotateY(90deg);
+  background: url("../img/zpp_cube3.png");
   background-size: cover;
 }
 .main .cube ul li:nth-of-type(4) {
-  transform: translateX(-2.55rem) rotateY(-90deg);
-  background: url("../img/zf_cube4.png");
+  transform: translateX(-1.785rem) rotateY(-90deg);
+  background: url("../img/zpp_cube4.png");
   background-size: cover;
 }
 .main .cube ul li:nth-of-type(5) {
-  transform: translateY(2.55rem) rotateX(-90deg);
-  background: url("../img/zf_cube5.png");
+  transform: translateY(1.785rem) rotateX(-90deg);
+  background: url("../img/zpp_cube5.png");
   background-size: cover;
 }
 .main .cube ul li:nth-of-type(6) {
-  transform: translateY(-2.55rem) rotateX(90deg);
-  background: url("../img/zf_cube6.png");
+  transform: translateY(-1.785rem) rotateX(90deg);
+  background: url("../img/zpp_cube6.png");
   background-size: cover;
 }
 .main .cube .figure {
@@ -1109,88 +1109,41 @@ body {
   width: 3.94rem;
   height: .44rem;
 }
-.main .examples .swiper-container,
-.main .examples .swiper-wrapper .swiper-slide {
+.main .details .swiper-container,
+.main .details .swiper-wrapper .swiper-slide {
   width: 100%;
   height: 100%;
   position: relative;
 }
-.main .examples .swiper-container:nth-of-type(1),
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) {
-  background-color: #fff;
+.main .details .swiper-container:nth-of-type(1),
+.main .details .swiper-wrapper .swiper-slide:nth-of-type(1) {
+  background-color: #5cb2a9;
 }
-.main .examples .swiper-container:nth-of-type(1) dl,
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) dl {
-  background: #8FBB4C;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  width: 5.4rem;
-  height: 7.8rem;
-  transform-style: preserve-3d;
-}
-.main .examples .swiper-container:nth-of-type(1) dl dt,
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) dl dt {
-  font-size: .4rem;
-  color: yellow;
-  text-align: center;
-  line-height: .8rem;
-}
-.main .examples .swiper-container:nth-of-type(1) dl dd,
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) dl dd {
-  padding-left: .64rem;
-  border-top: 2px dotted #fff;
-  font-size: .28rem;
-  color: #000;
-  position: relative;
-  height: .6rem;
-}
-.main .examples .swiper-container:nth-of-type(1) dl dd em,
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) dl dd em {
-  position: absolute;
-  top: .09rem;
-  left: .15rem;
-  width: .36rem;
-  height: .42rem;
-  font-size: .2rem;
-  background: url("../img/zf_outline.png");
-  background-size: cover;
-  color: #fff;
-  line-height: .42rem;
-  text-align: center;
-}
-.main .examples .swiper-container:nth-of-type(1) dl dd p,
-.main .examples .swiper-wrapper .swiper-slide:nth-of-type(1) dl dd p {
-  line-height: .6rem;
-}
-.main .examples .come-back {
+.main .details .come-back {
   position: absolute;
   width: .65rem;
   height: .76rem;
   right: .2rem;
   top: .2rem;
-  background: url("../img/zf_return.png") no-repeat;
+  background: url("../img/return.png") no-repeat;
   background-size: cover;
   z-index: 1000;
 }
-.main .examples .page1 {
+.main .details .page1 {
   background-color: #fff;
 }
-.main .examples .page2 {
+.main .details .page2 {
   background-color: #e45454;
 }
-.main .examples .page3 {
+.main .details .page3 {
   background-color: #fbffe8;
 }
-.main .examples .page4 {
+.main .details .page4 {
   background-color: #fac471;
 }
-.main .examples .page5 {
+.main .details .page5 {
   background-color: #fff9c1;
 }
-.main .examples .page6 {
+.main .details .page6 {
   background-color: #5975ff;
 }

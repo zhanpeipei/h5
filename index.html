@@ -7,10 +7,11 @@
     <title>h5简历</title>
     <meta name="keywords" content="h5简历，简历，web求职简历">
     <meta name="description" content="这是一份h5形式的求职简历">
-    <link rel="shortcut icon" href="img/icon.png">
+    <link rel="shortcut icon" href="img/icon.ico">
     <!--dev-->
     <link rel="stylesheet" href="css/index.css">
-    <!--<script src="js/less.js"></script>-->
+    <!--<link rel="stylesheet/less" href="css/index.less">-->
+    <script src="js/less.js"></script>
     <script>
         ~function () {
             function fontSize() {
@@ -53,11 +54,11 @@
 
         <div class="listen">
             <i class="listen-circle"></i>
-            <img src="img/zf_phoneListen.png" class="listen-bg">
+            <img src="img/phoneListen.png" class="listen-bg">
             <a class="listen-href" href="javascript:;"></a>
         </div>
         <div class="listening">
-            <img src="img/zf_phoneDetail.png" alt="" class="listening-bg">
+            <img src="img/phoneDetail.png" alt="" class="listening-bg">
             <a href="javascript:;" class="listening-href"></a>
         </div>
         <audio class="answer-bell" src="audio/bell.mp3" loop preload="none" e></audio>
@@ -70,7 +71,7 @@
         <div class="message-header">
             <div class="message-header-left"><span>&lt;</span>微信</div>
             <i class="icon-lxr message-header-right">&#xe654</i>
-<h3>BOSS</h3>
+            <h3>BOSS</h3>
         </div>
         <ul class="message-box">
             <li class="message-boss">
@@ -93,7 +94,8 @@
 
             <li class="message-zyp">
                 <img src="img/wx-zpp.jpg" alt="">
-                <p>熟悉Javascript/Json/XML/HTML5等Web前端技术，熟练使用js编写面向对象的应用程序，熟练使用JQuery和JQueryMobile框架，能与后台开发人员一起编写Ajax互交程序</p>
+                <p>
+                    熟悉Javascript/Json/XML/HTML5等Web前端技术，熟练使用js编写面向对象的应用程序，熟练使用JQuery和JQueryMobile框架，能与后台开发人员一起编写Ajax互交程序</p>
             </li>
             <li class="message-zyp">
                 <img src="img/wx-zpp.jpg" alt="">
@@ -130,69 +132,29 @@
             <li></li>
         </ul>
         <div class="figure">
-            <img src="img/zf_cubeTip.png" alt="">
+            <img src="img/cubeTip.png" alt="">
         </div>
     </section>
     <!--/.cube-->
 
     <!--.example-->
-    <section class="examples">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide page1" id="makisu">
-                    <dl>
-                        <dt>课程大纲</dt>
-                        <dd>
-                            <em>01</em>
-                            <p>第1个课程</p>
-                        </dd>
-                        <dd>
-                            <em>02</em>
-                            <p>第2个课程</p>
-                        </dd>
-                        <dd>
-                            <em>03</em>
-                            <p>第3个课程</p>
-                        </dd>
-                        <dd>
-                            <em>04</em>
-                            <p>第4个课程</p>
-                        </dd>
-                        <dd>
-                            <em>05</em>
-                            <p>第5个课程</p>
-                        </dd>
-                        <dd>
-                            <em>06</em>
-                            <p>第6个课程</p>
-                        </dd>
-                        <dd>
-                            <em>07</em>
-                            <p>第7个课程</p>
-                        </dd>
-                        <dd>
-                            <em>08</em>
-                            <p>第8个课程</p>
-                        </dd>
-                        <dd><em>09</em>
-                            <p>第9个课程</p>
-                        </dd>
-                        <dd>
-                            <em>10</em>
-                            <p>第10个课程</p>
-                        </dd>
-                        <dd>
-                            <em>11</em>
-                            <p>第11个课程</p>
-                        </dd>
-                    </dl>
-                </div>
-                <div class="swiper-slide page2"></div>
-                <div class="swiper-slide page3"></div>
-                <div class="swiper-slide page4"></div>
-                <div class="swiper-slide page5"></div>
-                <div class="swiper-slide page6"></div>
+    <section class="details swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide page1">
+                <div class="container"><a href="javascript:;" class="tag-cloud">CSS+HTML</a>
+                    <a href="javascript:;" class="tag-cloud">jQuery</a>
+                    <a href="javascript:;" class="tag-cloud">bootstrap</a>
+                    <a href="javascript:;" class="tag-cloud">vue</a>
+                    <a href="javascript:;" class="tag-cloud">es6</a>
+                    <a href="javascript:;" class="tag-cloud">cs3</a>
+                    <a href="javascript:;" class="tag-cloud">swiper</a></div>
             </div>
+            <div class="swiper-slide page2"></div>
+            <div class="swiper-slide page3"></div>
+            <div class="swiper-slide page4"></div>
+            <div class="swiper-slide page5"></div>
+            <div class="swiper-slide page6"></div>
+
         </div>
         <div class="come-back"></div>
 
@@ -202,7 +164,8 @@
 </main>
 <script src="js/zepto.min.js"></script>
 <script src="js/swiper.min.js"></script>
-<script src="js/makisu.min.js"></script>
+<script src='js/dat.gui.min.js'></script>
+<script src='js/paper.js'></script>
 <script src="js/index.js"></script>
 </body>
 </html>

@@ -9,9 +9,11 @@
   url('../font/iconfont.ttf') format('truetype'),
   url('../font/iconfont.svg#iconfont') format('svg');
 }
+
 [class^="icon-"], [class*=" icon-"] {
   font-family: "zpp" !important;
-  font-size:16px;font-style:normal;
+  font-size: 16px;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
@@ -35,7 +37,7 @@ body {
   background-color: #f4f4f4;
 }
 
-.start, .answer, .message, .cube, .examples {
+.start, .answer, .message, .cube, .details {
   position: relative;
   height: 100%;
   width: 100%;
@@ -117,7 +119,7 @@ body {
   }
   .answer {
     position: relative;
-    background: url("../img/zf_phoneBg.jpg") no-repeat;
+    background: url("../img/phoneBg.jpg") no-repeat;
     .title {
       padding-top: 0.5rem;
       text-align: center;
@@ -209,11 +211,11 @@ body {
   .message {
     background-color: #eaeaea;
 
-    .message-header{
+    .message-header {
       position: absolute;
       z-index: 9999;
       background-color: #000;
-      color:#fff;
+      color: #fff;
       height: .7rem;
       line-height: .7rem;
       width: 100%;
@@ -222,68 +224,68 @@ body {
       overflow: hidden;
       box-sizing: border-box;
       padding: 0 .2rem;
-      .message-header-left{
+      .message-header-left {
         float: left;
-        span{
+        span {
           font-size: .3rem;
         }
       }
-      h3{
+      h3 {
         font-size: .34rem;
       }
-      .message-header-right{
+      .message-header-right {
         float: right;
         font-size: .3rem;
       }
-  }
-  .message-box {
-    width: 100%;
-    position: relative;
-    padding-top: .2rem;
-    transition: all .3s linear;
-    transform: translateY(.8rem);
-    li {
-      opacity: 0;
-      overflow: hidden;
+    }
+    .message-box {
+      width: 100%;
       position: relative;
-      margin-bottom: .4rem;
-      line-height: .4rem;
-      font-size: .26rem;
-      -webkit-transition: all 2s;
-      transition: all .3s;
-      transform: translateY(1rem);
-      p {
-        text-align: left;
-        max-width: 3.6rem;
-        padding: .25rem;
-        border-radius: .1rem;
+      padding-top: .2rem;
+      transition: all .3s linear;
+      transform: translateY(.8rem);
+      li {
+        opacity: 0;
+        overflow: hidden;
         position: relative;
-        border: .02rem solid #cacaca;
-      }
-      img {
-        width: .82rem;
-        height: .82rem;
-        border-radius: 50%;
-        position: absolute;
-        top: 0;
-      }
-      &.message-zyp {
-        text-align: right;
-        padding-right: 1.25rem;
-        img {
-          right: .25rem;
-        }
+        margin-bottom: .4rem;
+        line-height: .4rem;
+        font-size: .26rem;
+        -webkit-transition: all 2s;
+        transition: all .3s;
+        transform: translateY(1rem);
         p {
-          float: right;
-          background-color: #A2E45C;
-          &::after {
-            content: "";
-            position: absolute;
-            top: .2rem;
-            right: -.1rem;
-            width: .1rem;
-            height: .2rem;
-            background: url("../img/zf_messageArrow2.png") no-repeat;
+          text-align: left;
+          max-width: 3.6rem;
+          padding: .25rem;
+          border-radius: .1rem;
+          position: relative;
+          border: .02rem solid #cacaca;
+        }
+        img {
+          width: .82rem;
+          height: .82rem;
+          border-radius: 50%;
+          position: absolute;
+          top: 0;
+        }
+        &.message-zyp {
+          text-align: right;
+          padding-right: 1.25rem;
+          img {
+            right: .25rem;
+          }
+          p {
+            float: right;
+            background-color: #A2E45C;
+            &::after {
+              content: "";
+              position: absolute;
+              top: .2rem;
+              right: -.1rem;
+              width: .1rem;
+              height: .2rem;
+              background: url("../img/messageArrow2.png") no-repeat;
               .bg
             }
           }
@@ -303,7 +305,7 @@ body {
               height: .2rem;
               top: 0.2rem;
               left: -.1rem;
-              background: url("../img/zf_messageArrow1.png");
+              background: url("../img/messageArrow1.png");
               .bg
             }
           }
@@ -317,7 +319,7 @@ body {
       bottom: -.54rem;
       left: 0;
       transition: all .3s linear;
-      background: url("../img/zf_messageKeyboard.png") no-repeat;
+      background: url("../img/messageKeyboard.png") no-repeat;
       transform: translateY(3.7rem);
       .bg;
       span {
@@ -331,7 +333,7 @@ body {
         position: absolute;
         width: 1.47rem;
         height: .74rem;
-        background: url("../img/zf_messageChat.png");
+        background: url("../img/messageChat.png");
         .bg;
         right: 0.1rem;
         bottom: .58rem;
@@ -342,10 +344,10 @@ body {
     }
   }
   .cube {
-    background: url("../img/zf_cubeBg.jpg") no-repeat;
+    background: url("../img/cubeBg.jpg") no-repeat;
     .bg;
     perspective: 1000px;
-    @len: 2.55rem;
+    @len: unit(2.55*.7, rem);
     ul {
       width: 2*@len;
       height: 2*@len;
@@ -353,45 +355,49 @@ body {
       position: absolute;
       left: 50%;
       top: 50%;
-      margin-top: -@len;
       margin-left: -@len;
-      transform: rotateY(25deg) rotateX(-20deg) scale(.6);
+      margin-top: -@len;
+      transform: rotateX(25deg) rotateY(-20deg);
       transition: all .4s;
       li {
         position: absolute;
-        width: 2*@len;
-        height: 2*@len;
+        width: 100%;
+        height: 100%;
         left: 0;
         top: 0;
 
         &:nth-of-type(1) {
           transform: translateZ(@len);
-          background: url("../img/zf_cube1.png");
+          background: url("../img/zpp_cube1.png");
           .bg;
         }
         &:nth-of-type(2) {
           transform: translateZ(-@len) rotateY(180deg);
-          background: url("../img/zf_cube2.png");
+          background: url("../img/zpp_cube2.png");
           .bg;
         }
         &:nth-of-type(3) {
+
           transform: translateX(@len) rotateY(90deg);
-          background: url("../img/zf_cube3.png");
+          background: url("../img/zpp_cube3.png");
           .bg;
         }
         &:nth-of-type(4) {
+
           transform: translateX(-@len) rotateY(-90deg);
-          background: url("../img/zf_cube4.png");
+          background: url("../img/zpp_cube4.png");
           .bg;
         }
         &:nth-of-type(5) {
+
           transform: translateY(@len) rotateX(-90deg);
-          background: url("../img/zf_cube5.png");
+          background: url("../img/zpp_cube5.png");
           .bg;
         }
         &:nth-of-type(6) {
+
           transform: translateY(-@len) rotateX(90deg);
-          background: url("../img/zf_cube6.png");
+          background: url("../img/zpp_cube6.png");
           .bg;
         }
       }
@@ -408,55 +414,16 @@ body {
       }
     }
   }
-  .examples {
+  .details {
     .swiper-container, .swiper-wrapper .swiper-slide {
       width: 100%;
       height: 100%;
       position: relative;
       &:nth-of-type(1) {
-        background-color: #fff;
-        dl {
-          background: #8FBB4C;
-          position: absolute;
-          left: 0;
-          top: 0;
-          right: 0;
-          bottom: 0;
-          margin: auto;
-          width: 5.4rem;
-          height: 7.8rem;
-          transform-style: preserve-3d;
-          dt {
-            font-size: .4rem;
-            color: yellow;
-            text-align: center;
-            line-height: .8rem;
-          }
-          dd {
-            padding-left: .64rem;
-            border-top: 2px dotted #fff;
-            font-size: .28rem;
-            color: #000;
-            position: relative;
-            height: .6rem;
-            em {
-              position: absolute;
-              top: .09rem;
-              left: .15rem;
-              width: .36rem;
-              height: .42rem;
-              font-size: .2rem;
-              background: url("../img/zf_outline.png");
-              .bg;
-              color: #fff;
-              line-height: .42rem;
-              text-align: center;
-            }
-            p {
-              line-height: .6rem;
-            }
-          }
-        }
+        background-color: #5cb2a9;
+
+
+
       }
 
     }
@@ -466,7 +433,7 @@ body {
       height: .76rem;
       right: .2rem;
       top: .2rem;
-      background: url("../img/zf_return.png") no-repeat;
+      background: url("../img/return.png") no-repeat;
       .bg;
       z-index: 1000;
     }
