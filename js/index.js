@@ -16,7 +16,7 @@
 var start = function () {
     var $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        srcList = ["img/ability1.png", "img/ability14.png", "img/ability2.png", "img/ability3.png", "img/ability5.png", "img/css3.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/jquery.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/return.png", "img/wx-boss.png", "img/wx-zpp.jpg", "img/zpp_cube1.png", "img/zpp_cube2.png", "img/zpp_cube3.png", "img/zpp_cube4.png", "img/zpp_cube5.png", "img/zpp_cube6.png"],
+        srcList = ["img/ability1.png", "img/ability14.png", "img/ability2.png", "img/ability3.png", "img/ability5.png", "img/css3.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/jquery.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/return.png", "img/wx-boss.png", "img/wx-zpp.jpg", "img/zpp_cube1.png", "img/zpp_cube2.png", "img/zpp_cube3.png", "img/zpp_cube4.png", "img/zpp_cube5.png", "img/zpp_cube6.png", "audio/bell.mp3", "audio/music.mp3", "audio/say.mp3"],
         _ref = [srcList.length, 0],
         total = _ref[0],
         cur = _ref[1];
@@ -24,13 +24,25 @@ var start = function () {
 
     function progress() {
         srcList.forEach(function (item) {
-            var img = new Image();
-            img.src = item;
-            img.onload = function () {
-                img = null;
-                cur++;
-                computer(cur);
-            };
+            var reg = /(png|jpg|gif)$/,
+                el = null;
+            if (reg.test(item)) {
+                el = new Image();
+                el.src = item;
+                el.onload = function () {
+                    el = null;
+                    cur++;
+                    computer(cur);
+                };
+            } else {
+                el = new Audio();
+                el.src = item;
+                el.oncanplaythrough = function () {
+                    el = null;
+                    cur++;
+                    computer(cur);
+                };
+            }
         });
     }
 
@@ -68,7 +80,7 @@ var answer = function () {
     //标题上面的计时器
     var count = function count() {
         $timeCount.css("display", "block");
-        console.log(1);
+
         var duration = answerIntro.duration,
             cur = answerIntro.currentTime;
         answerTimer = setInterval(function () {
@@ -77,7 +89,7 @@ var answer = function () {
                 s = Math.floor(cur % 60);
             m = m < 10 ? "0" + m : m;
             s = s < 10 ? "0" + s : s;
-            console.log(m, s);
+
             $timeCount.html(m + ":" + s);
             if (answerIntro.ended) {
                 clearTimeout(answerTimer);
@@ -126,14 +138,17 @@ var message = function () {
             step === 3 ? talking() : null;
             step++;
 
-            if (step > 5) {
-                translateY -= 2;
+            if (step > 4) {
+                translateY -= 3;
                 $messageBox.css("transform", "translateY(" + translateY + "rem)");
             }
-            if (step > $liList.length) {
+            if (step >= $liList.length) {
                 clearTimeout(messageTimer);
-                $message.remove();
-                cube.init();
+                var timer = setTimeout(function () {
+                    $message.remove();
+                    cube.init();
+                    clearTimeout(timer);
+                }, 3000);
             }
         }, 1000);
     };
@@ -263,3 +278,4 @@ var details = function () {
     };
 }();
 start.init();
+
