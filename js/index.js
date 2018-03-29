@@ -215,6 +215,7 @@ var cube = function () {
                 "rotateX": 25,
                 "rotateY": -20
             }).on({ "touchstart": start, "touchmove": move, "touchend": end });
+            $cube.on("touchstart touchmove touchend",function(e){e.preventDefault();})
             $box.find("li").singleTap(function () {
                 var index = $(this).index();
                 $cube.css("display", "none");
