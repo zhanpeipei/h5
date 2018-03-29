@@ -16,60 +16,46 @@
 let start = (function () {
     let $start = $(".start").eq(0),
         $run = $start.find(".run").eq(0),
-        srcList = ["img/ability1.png","img/ability14.png","img/ability2.png","img/ability3.png","img/ability5.png","img/css3.png","img/cubeBg.jpg","img/cubeTip.png","img/jquery.png","img/messageArrow1.png","img/messageArrow2.png","img/messageChat.png","img/messageKeyboard.png","img/phoneBg.jpg","img/phoneDetail.png","img/phoneListen.png","img/return.png","img/wx-boss.png","img/wx-zpp.jpg","img/zpp_cube1.png","img/zpp_cube2.png","img/zpp_cube3.png","img/zpp_cube4.png","img/zpp_cube5.png","img/zpp_cube6.png","audio/bell.mp3", "audio/music.mp3", "audio/say.mp3",],
+        srcList = ["img/ability1.png", "img/ability14.png", "img/ability2.png", "img/ability3.png", "img/ability5.png", "img/css3.png", "img/cubeBg.jpg", "img/cubeTip.png", "img/jquery.png", "img/messageArrow1.png", "img/messageArrow2.png", "img/messageChat.png", "img/messageKeyboard.png", "img/phoneBg.jpg", "img/phoneDetail.png", "img/phoneListen.png", "img/return.png", "img/wx-boss.png", "img/wx-zpp.jpg", "img/zpp_cube1.png", "img/zpp_cube2.png", "img/zpp_cube3.png", "img/zpp_cube4.png", "img/zpp_cube5.png", "img/zpp_cube6.png"],
 
         [total, cur] = [srcList.length, 0];
 
     function progress() {
         srcList.forEach(function (item) {
-            let reg = /\.(png|gif|jpg)$/,
-                el = null;
-
-            if (reg.test(item)) {
-                el = new Image;
-                el.src = item;
-                el.onload = () => {
-                    el = null;
-                    cur++;
-                    computer(cur);
-                };
-            } else {
-
-                el = new Audio;
-                el.src = item;
-                el.oncanplaythrough = () => {
-                    el = null;
-                    cur++;
-                    computer(cur);
-                };
-
-            }
-
-        })
+            let img = new Image;
+            img.src = item;
+            img.onload = () => {
+                img = null;
+                cur++;
+                computer(cur);
+            };
     }
+)
+}
 
-    function computer(cur) {
-        let current = cur / total * 100 + "%";
-        $run.css("width", current);
-        if (cur >= total) {
-            let timer = setTimeout(() => {
-                $start.remove();
-                answer.init();
-                clearTimeout(timer);
-            }, 1000)
+function computer(cur) {
+    let current = cur / total * 100 + "%";
+    $run.css("width", current);
+    if (cur >= total) {
+        let timer = setTimeout(() => {
+            $start.remove();
+            answer.init();
+            clearTimeout(timer);
+        }, 1000)
 
-
-        }
 
     }
 
-    return {
-        init: function () {
-            $start.css("display", "block");
-            progress();
-        }
+}
+
+return {
+    init: function () {
+        $start.css("display", "block");
+        progress();
     }
-})();
+}
+})
+();
 
 let answer = (function () {
     let $answer = $(".answer").eq(0),
