@@ -290,4 +290,4 @@ var details = function () {
         }
     };
 }();
-details.init();
+start.init();
