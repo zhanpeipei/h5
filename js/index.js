@@ -126,7 +126,7 @@ var message = function () {
             step++;
 
             if (step > 4) {
-                translateY -= 3;
+                translateY -= 2;
                 $messageBox.css("transform", "translateY(" + translateY + "rem)");
             }
             if (step >= $liList.length) {
@@ -232,22 +232,11 @@ var details = function () {
         cube.init();
         $details.css("display", "none");
     };
-    var tagCloud = function tagCloud() {
-        var tagEle = $details.find(".tag-cloud"),
-            container = $details.find(".container"),
-            r = 300,
-            fallLength = 500,
-            tags = [],
-            angleX = Math.PI / 500,
-            angleY = Math.PI / 500,
-            CX = container.offsetWidth / 2,
-            CY = container.offsetHeight / 2,
-            EX = container.offsetLeft,
-            EY = container.offsetTop;
-    };
+
     var change = function change(example) {
         var slides = example.slides,
             activeIndex = example.activeIndex;
+        $(slides[activeIndex]).addClass("active").siblings().removeClass("active")
     };
     return {
         init: function init() {
@@ -259,8 +248,41 @@ var details = function () {
                 $comeBack.singleTap(comeBack);
                 slideExamples = new Swiper(".swiper-container", {
                     "effect": "coverflow",
-                    "onTransitionEnd": change,
-                    "onInit": change
+                    mousewheel: true,
+                    on:{
+                        init: function() {
+                            this.myIndex = 0;//activeIndex在滑动到一半时会切换，改用滑动完再切换的myIndex
+                        },
+                        progress: function() {
+                            for (var i = 0; i < this.slides.length; i++) {
+                                var slide=this.slides.eq(i);
+                                var progress = this.slides[i].progress;
+                                var translate, boxShadow;
+                                translate = progress * this.height * 0.8;
+                                scale = 1 - Math.min(Math.abs(progress * 0.2), 1);
+                                if (i == this.myIndex) {
+                                    slide.transform('translate3d(0,' + (translate) + 'px,0) scale(' + scale + ')');
+                                    slide.css({'z-index':0,'boxShadow':'0px 0px 10px rgba(0,0,0,.5)'});
+                                }
+                            }
+                        },
+                        transitionEnd: function() {
+                            this.myIndex = this.activeIndex;
+                            for (var i = 0; i < this.slides.length; i++) {
+                                var slide=this.slides.eq(i);
+                                slide.transform('');
+                                slide.css('z-index',1);
+                            }
+                            this.mousewheel.enable();
+                        },
+                        setTransition: function(speed) {
+                            for (var i = 0; i < this.slides.length; i++) {
+                                var slide=this.slides.eq(i);
+                                slide.transition(speed + 'ms');
+                            }
+                            this.mousewheel.disable();
+                        }
+                    }
                 });
             }
             // index是索引，0是速度
@@ -268,4 +290,4 @@ var details = function () {
         }
     };
 }();
-start.init();
+details.init();
