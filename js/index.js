@@ -241,9 +241,7 @@ var details = function () {
     return {
         init: function init() {
             var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
-
             $details.css("display", "block");
-
             if (!slideExamples) {
                 $comeBack.singleTap(comeBack);
                 slideExamples = new Swiper(".swiper-container", {
@@ -285,7 +283,6 @@ var details = function () {
                     }
                 });
             }
-            // index是索引，0是速度
             slideExamples.slideTo(index, 0);
         }
     };
