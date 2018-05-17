@@ -182,7 +182,6 @@ var cube = function () {
 
     var start = function start(e) {
         var touch = e.touches[0];
-        console.log(e);
         $box.attr({ "startX": touch.clientX, "startY": touch.clientY });
         e.preventDefault();
     };
@@ -218,6 +217,11 @@ var cube = function () {
             }).on({ "touchstart": start, "touchmove": move, "touchend": end });
             $(window).on("touchstart touchmove touchend",function(e){e.preventDefault();})
             $box.find("li").click(function () {
+                var index = $(this).index();
+                $cube.css("display", "none");
+                details.init(index);
+            });
+            $box.find("li").singleTap(function () {
                 var index = $(this).index();
                 $cube.css("display", "none");
                 details.init(index);
