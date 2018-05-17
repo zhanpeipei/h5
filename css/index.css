@@ -1223,7 +1223,6 @@ body {
 .main .details .page3 {
   background-color: #fbffe8;
   box-sizing: border-box;
-  display: flex;
   padding: .3rem;
   font-size: .6rem;
   color: #5975ff;

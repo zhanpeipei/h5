@@ -103,8 +103,8 @@ var answer = function () {
             $answer.css("display", "block");
             answerBell.play();
             $listen.css("transform", "translateY(0)");
-            $listenA.singleTap(listenAF);
-            $listeningA.singleTap(listeningAF);
+            $listenA.click(listenAF);
+            $listeningA.click(listeningAF);
         }
     };
 }();
@@ -159,7 +159,7 @@ var message = function () {
         }, 500);
     };
     //点击发送按钮
-    $btn.singleTap(function () {
+    $btn.click(function () {
         talkText.style.display = "none";
         $keyboard.css("transform", "translateY(3.7rem)");
         step--;
@@ -182,6 +182,7 @@ var cube = function () {
 
     var start = function start(e) {
         var touch = e.touches[0];
+        console.log(e);
         $box.attr({ "startX": touch.clientX, "startY": touch.clientY });
         e.preventDefault();
     };
@@ -216,7 +217,7 @@ var cube = function () {
                 "rotateY": -20
             }).on({ "touchstart": start, "touchmove": move, "touchend": end });
             $(window).on("touchstart touchmove touchend",function(e){e.preventDefault();})
-            $box.find("li").singleTap(function () {
+            $box.find("li").click(function () {
                 var index = $(this).index();
                 $cube.css("display", "none");
                 details.init(index);
@@ -243,7 +244,7 @@ var details = function () {
             var index = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
             $details.css("display", "block");
             if (!slideExamples) {
-                $comeBack.singleTap(comeBack);
+                $comeBack.click(comeBack);
                 slideExamples = new Swiper(".swiper-container", {
                     "effect": "coverflow",
                     mousewheel: true,
