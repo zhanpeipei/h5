@@ -249,6 +249,7 @@ var details = function () {
             $details.css("display", "block");
             if (!slideExamples) {
                 $comeBack.click(comeBack);
+                $comeBack.singleTap(comeBack);
                 slideExamples = new Swiper(".swiper-container", {
                     "effect": "coverflow",
                     mousewheel: true,
